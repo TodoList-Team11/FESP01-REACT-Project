@@ -11,9 +11,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<ListPage />} />
-        <Route path="/info" element={<InfoPage />} />
+        <Route path="/info/:todoId" element={<InfoPage />} />
         <Route path="/regist" element={<RegistPage />} />
-        <Route path="/update" element={<UpdatePage />} />
+        <Route path="/update/:todoId" element={<UpdatePage />} />
       </Route>
     </Routes>
   );
