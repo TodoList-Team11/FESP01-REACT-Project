@@ -13,7 +13,7 @@ const RegistPage = () => {
     if (title.current === null || title.current.value.trim() === "") {
       alert("제목을 입력하세요");
     }
-    if (content.current === null|| content.current.value.trim() === "" ) {
+    else if (content.current === null|| content.current.value.trim() === "" ) {
       alert("상세 내용을 입력하세요");
     }
     else {
