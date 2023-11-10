@@ -1,0 +1,52 @@
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr 1fr;
+}
+
+.regist-link {
+  grid-area: 1/4/2/5;
+}
+
+.regist-btn {
+  margin-right: 20px;
+  height: 30px;
+  width: 90%;
+  background-color: #0747a6;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.list select {
+  margin-left: 20px;
+}
+
+#container-list {
+  /* grid-area: 2/1/5/5; */
+}
+
+#content-not-done {
+  grid-area: 2/1/5/3;
+}
+
+#content-done {
+  grid-area: 2/3/5/5;
+}
+
+.list #content-done,
+.list #content-not-done {
+  background-color: #f4f5f7;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.todo-count,
+.done-count {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 10px 0;
+}

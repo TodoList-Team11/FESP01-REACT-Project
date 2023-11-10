@@ -1,31 +1,23 @@
-import axios from "axios";
-type TodoInfo = {
-  _id: number;
-  title: string;
-  content: string;
-  done: boolean | true | false;
-  createdAt: string;
-  updatedAt: string;
-};
+import { useState, useEffect } from "react";
+import axios, { AxiosError } from "axios";
 
-type TodoList = {
-  ok: number;
-  items: TodoInfo[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
-};
+export default function useSelectTodoList() {
+  const [todoList, setTodoList] = useState<TodoListResponse>();
+  const [error, setError] = useState<Error>();
 
-export default async function useSelectTodoList() {
-  try {
-    const response = await axios("http://localhost:33088/api/todolist");
-    return response.data as TodoList;
-  } catch (err) {
-    console.error(err);
-  }
+  useEffect(() => {
+    const fetchTodoList = async () => {
+      try {
+        const response = await axios("http://localhost:33088/api/todolist");
+        setTodoList(response.data as TodoListResponse);
+      } catch (err) {
+        setError(err as AxiosError);
+        console.error(err);
+      }
+    };
+
+    fetchTodoList();
+  }, []); // 의존성 배열을 빈 배열로 설정하여 마운트될 때 한 번만 실행하도록 함
+
+  return { todoList, error };
 }
-
-export type { TodoInfo, TodoList };
