@@ -1,5 +1,9 @@
 const ListPage = () => {
-  return <h1>list</h1>;
+  return (
+    <div>
+      <p>list</p>
+    </div>
+  );
 };
 
 export default ListPage;
