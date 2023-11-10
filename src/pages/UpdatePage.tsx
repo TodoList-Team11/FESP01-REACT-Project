@@ -1,13 +1,10 @@
-import Update from "features/update/UpDate";
-import Header from "layouts/Header";
-import Footer from "layouts/Footer";
+import TodoUpdate from "features/update/TodoUpdate";
+import React from "react";
 
-const UpdatePage = () => {
+const UpdatePage: React.FC = () => {
   return (
     <div>
-      <Header title={"todo 수정"} />
-      <Update />
-      <Footer />
+      <TodoUpdate />
     </div>
   );
 };
