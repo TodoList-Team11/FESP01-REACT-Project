@@ -10,14 +10,32 @@ interface Props {
   setNotDoneList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
   setDoneList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
 }
-export const handleCheckboxClick = ({
-  _id,
-  isDone,
-}: {
+
+type HandleCheckboxClick = {
   _id: number;
   isDone: boolean;
-}) => {
+};
+export const handleCheckboxClick = ({ _id, isDone }: HandleCheckboxClick) => {
   updateTodoInfoDone({ _id, isDone });
+};
+
+type ChangeDoneList = {
+  todo: TodoItem;
+  setNotDoneList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
+  setDoneList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
+};
+export const changeDoneList = ({
+  todo,
+  setNotDoneList,
+  setDoneList,
+}: ChangeDoneList) => {
+  if (todo.done) {
+    setNotDoneList((todos) => [...todos, { ...todo, done: false }]);
+    setDoneList((todos) => todos.filter((el) => el._id !== todo._id));
+  } else if (!todo.done) {
+    setDoneList((todos) => [...todos, { ...todo, done: true }]);
+    setNotDoneList((todos) => todos.filter((el) => el._id !== todo._id));
+  }
 };
 
 const ListCard = ({ todo, setNotDoneList, setDoneList }: Props) => {
@@ -30,15 +48,7 @@ const ListCard = ({ todo, setNotDoneList, setDoneList }: Props) => {
         defaultChecked={todo.done}
         onClick={(e) => {
           handleCheckboxClick({ _id: todo._id, isDone: todo.done });
-          if (todo.done) {
-            setNotDoneList((todos) => [...todos, { ...todo, done: false }]);
-            setDoneList((todos) => todos.filter((el) => el._id !== todo._id));
-          } else if (!todo.done) {
-            setDoneList((todos) => [...todos, { ...todo, done: true }]);
-            setNotDoneList((todos) =>
-              todos.filter((el) => el._id !== todo._id)
-            );
-          }
+          changeDoneList({ todo, setNotDoneList, setDoneList });
         }}
       />
       <Link to={`/info/${todo._id}`}>{todo.title}</Link>
