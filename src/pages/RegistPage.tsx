@@ -1,10 +1,12 @@
 import React from 'react'
 import {useRef} from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 const RegistPage = () => {
   const title = useRef<HTMLInputElement>(null);
   const content = useRef<HTMLTextAreaElement>(null);
+  const navigate = useNavigate();
   // const content = useRef('')
   const handleRegist = async (e: React.MouseEvent<HTMLButtonElement>) => {
     // 등록하기
@@ -41,7 +43,7 @@ const RegistPage = () => {
     if (shouldCancel){
       try {        
         // back to todolist 
-        window.location.replace("/");        
+        navigate('/')  
       } catch (err) {
         console.log(err);
       }
