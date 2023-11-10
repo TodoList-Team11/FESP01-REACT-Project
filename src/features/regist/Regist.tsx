@@ -2,6 +2,7 @@ import React from 'react'
 import {useRef} from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import './Regist.css'
 
 const Regist = () => {
   const title = useRef<HTMLInputElement>(null);
@@ -55,24 +56,27 @@ const Regist = () => {
 
   return (
   <>
-    <h1>TODO Register</h1>
-    <form>
-      <div>할 일</div>
-      <input 
-        placeholder="할 일을 입력하세요"
-        type = "text"
-        ref = {title}
-      />
-      <div>상세내용</div>
-      <textarea 
-        placeholder="상세 내용을 입력하세요"        
-        ref = {content}
-      />
-      <div> 
-        <button onClick = {handleRegist}>등록</button>
-        <button onClick = {handleCancel}>취소</button>
-      </div>
+    <div className = "create-container"> 
+      <form className = "form">
+        <div className = "title">할 일</div>
+        <input
+          className = "title-create"
+          placeholder="할 일을 입력하세요"
+          type = "text"
+          ref = {title}
+        />
+        <div className = "content">상세내용</div>
+        <textarea 
+          className = "content-create"
+          placeholder="상세 내용을 입력하세요"        
+          ref = {content}
+        />
+        <div> 
+          <button className = "submit" onClick = {handleRegist}>등록</button>
+          <button className = "cancel" onClick = {handleCancel}>취소</button>
+        </div>
     </form>
+    </div>
   </>);
 };
 
