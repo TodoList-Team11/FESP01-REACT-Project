@@ -1,11 +1,9 @@
-import { TodoInfo } from "services/useSelectTodoList";
-
 interface Props {
   items: TodoInfo[];
   order: string;
 }
 
-export default function sortItems({ items, order }: Props): TodoInfo[] {
+export default function sortItems({ items, order }: Props): TodoItem[] {
   if (items.length === 0) {
     return items;
   } else {
