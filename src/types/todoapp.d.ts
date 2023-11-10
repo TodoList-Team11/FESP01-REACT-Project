@@ -2,7 +2,7 @@ interface TodoItem {
   _id: number;
   title: string;
   content: string;
-  done: true;
+  done: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -22,7 +22,6 @@ interface TodoResponse {
   ok: number;
   item: TodoItem;
 }
-
 
 interface TodoInfo extends TodoItem {
   item: object;
