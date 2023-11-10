@@ -1,5 +1,7 @@
+import Regist from "features/regist/Regist";
+
 const RegistPage = () => {
-  return <h1>register</h1>;
+  return <Regist/>
 };
 
 export default RegistPage;
