@@ -1,9 +1,7 @@
+import List from "features/list/List";
+
 const ListPage = () => {
-  return (
-    <div>
-      <p>list</p>
-    </div>
-  );
+  return <List />;
 };
 
 export default ListPage;
