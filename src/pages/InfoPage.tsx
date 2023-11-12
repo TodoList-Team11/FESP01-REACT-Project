@@ -1,5 +1,7 @@
+import TodoInfo from "features/info/infopage";
+
 const InfoPage = () => {
-  return <h1>info</h1>;
+  return <TodoInfo/>;
 };
 
 export default InfoPage;
