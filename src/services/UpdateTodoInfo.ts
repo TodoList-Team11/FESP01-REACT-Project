@@ -1,14 +1,16 @@
 import axios from "axios";
 
-interface Props {
-  _id: number;
-  isDone: boolean;
-}
-
-export default async function updateTodoInfoDone({ _id, isDone }: Props) {
+export default async function useUpdateTodoInfo({
+  _id,
+  title,
+  content,
+  done,
+}: TodoInfoItem) {
   try {
     await axios.patch(`http://localhost:33088/api/todolist/${_id}`, {
-      done: isDone,
+      title,
+      content,
+      done,
     });
   } catch (err) {
     console.log(err);

@@ -39,19 +39,35 @@ export const changeDoneList = ({
 };
 
 const ListCard = ({ todo, setNotDoneList, setDoneList }: Props) => {
+  const handleDragStart = ({
+    e,
+    todo,
+  }: {
+    e: React.DragEvent;
+    todo: TodoItem;
+  }) => {
+    e.dataTransfer.setData("todo", JSON.stringify(todo));
+  };
   return (
     // <Draggable>
-    <div id={`${todo._id}`} className="list-card">
+    <div
+      id={`${todo._id}`}
+      className="list-card"
+      draggable="true"
+      onDragStart={(e: React.DragEvent) => handleDragStart({ e, todo })}
+    >
       <input
         type="checkbox"
         id={`${todo._id}`}
         defaultChecked={todo.done}
         onClick={(e) => {
-          handleCheckboxClick({ _id: todo._id, isDone: todo.done });
+          handleCheckboxClick({ _id: todo._id, isDone: !todo.done });
           changeDoneList({ todo, setNotDoneList, setDoneList });
         }}
       />
-      <Link to={`/info/${todo._id}`}>{todo.title}</Link>
+      <Link to={`/info/${todo._id}`} id={`${todo._id}`}>
+        {todo.title}
+      </Link>
       <span className="create-time">{handleDateForm(todo.createdAt)}</span>
     </div>
     // </Draggable>
