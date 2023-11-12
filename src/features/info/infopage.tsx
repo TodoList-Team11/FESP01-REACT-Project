@@ -15,7 +15,7 @@ interface TodoItem {
 const InfoSection = ({ title, content }: { title: string, content: string }) => (
   <section>
     <h2>{title}</h2>
-    <p>{content}</p>
+    <p id="info-todo-content">{content}</p>
   </section>
 );
 
@@ -52,18 +52,19 @@ const TodoInfo = () => {
     <div id="page" className="info">
       <header></header>
       <main>
-        <InfoSection title="할 일" content={item.title} />
-        <InfoSection title="상세 내용" content={item.content} />
-        <InfoSection title="생성일" content={new Date(item.createdAt).toLocaleDateString()} />
-        <InfoSection title="수정일" content={new Date(item.updatedAt).toLocaleDateString()} />
-        <input id="checkbox" type="checkbox" checked={item.done} onChange={handleCheckbox} />
+        <section id='info-contents-section'>
+          <h2 id="info-todo-title">할 일 : {item.title}</h2>
+          <InfoSection title="상세 내용" content={item.content} />
+          <p id="info-create-time">생성일 : {new Date(item.createdAt).toLocaleDateString()}</p>
+          <p id="info-update-time">수정일 : {new Date(item.updatedAt).toLocaleDateString()}</p>
+          <input id="checkbox" type="checkbox" checked={item.done} onChange={handleCheckbox} />
+        </section>
         <section id="info-buttons-section">
-          <button id="info-btn-modify" onClick={() => navigate(`/update/${todoId}`)}>수정</button>
+          <button id="info-btn-modify" onClick={() => navigate(`/update/${item._id}`)}>수정</button>
           <button id="info-btn-delete" onClick={handleDelete}>삭제</button>
           <button id="info-btn-home" onClick={() => navigate('/')}>홈으로 이동</button>
         </section>
       </main>
-      <footer></footer>
     </div>
   );
 };
