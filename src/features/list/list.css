@@ -41,6 +41,8 @@
   border-radius: 5px;
   padding: 20px;
   margin: 20px;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
 }
 
 .todo-count,
