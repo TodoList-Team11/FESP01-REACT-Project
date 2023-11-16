@@ -57,30 +57,36 @@ const Regist = () => {
 
   return (
     <>
-      <div className="create-container">
-        <form className="form">
-          <div className="title">할 일</div>
-          <input
-            className="title-create"
-            placeholder="할 일을 입력하세요"
-            type="text"
-            ref={title}
-          />
-          <div className="content">상세내용</div>
-          <textarea
-            className="content-create"
-            placeholder="상세 내용을 입력하세요"
-            ref={content}
-          />
-          <div>
-            <button className="submit" onClick={handleRegist}>
-              등록
-            </button>
-            <button className="cancel" onClick={handleCancel}>
-              취소
-            </button>
-          </div>
-        </form>
+      <div>
+        <div className="regist">
+          <form className="form">
+            <div className="regist-detail">
+              <div className="title-container">
+                <div className="title">할 일</div>
+                <input
+                  className="title-regist"
+                  placeholder="할 일을 입력하세요"
+                  type="text"
+                  ref={title}
+                />
+              </div>
+              <div className="content">상세내용</div>
+              <textarea
+                className="content-regist"
+                placeholder="상세 내용을 입력하세요"
+                ref={content}
+              />
+              <div>
+                <button className="submit" onClick={handleRegist}>
+                  등록
+                </button>
+                <button className="cancel" onClick={handleCancel}>
+                  취소
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );
