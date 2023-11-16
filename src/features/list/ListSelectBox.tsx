@@ -1,5 +1,3 @@
-import { ChangeEventHandler } from "react";
-
 interface Props {
   setNotDoneList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
   setDoneList: React.Dispatch<React.SetStateAction<TodoItem[]>>;
