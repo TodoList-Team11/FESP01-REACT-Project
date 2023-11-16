@@ -4,6 +4,7 @@ import ListCard from "./ListCard";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import updateTodoInfoDone from "services/useUpdateTodoInfoDone";
+import ListSelectBox from "./ListSelectBox";
 
 const List = () => {
   const [notDoneList, setNotDoneList] = useState<TodoItem[]>([]);
@@ -20,7 +21,6 @@ const List = () => {
   }, [todoList]);
 
   //Drag & Drop
-  const draggingItemId = useRef<string>();
   type DropTodo = {
     e: React.DragEvent;
     isDone: boolean;
@@ -49,7 +49,10 @@ const List = () => {
 
   return (
     <main className="list">
-      <select></select>
+      <ListSelectBox
+        setNotDoneList={setNotDoneList}
+        setDoneList={setDoneList}
+      />
       <Link to={`/regist`} className="regist-link">
         <button className="regist-btn">등록</button>
       </Link>
