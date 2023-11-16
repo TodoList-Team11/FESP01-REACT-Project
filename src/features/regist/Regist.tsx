@@ -7,8 +7,6 @@ import "./Regist.css";
 const Regist = () => {
   const title = useRef<HTMLInputElement>(null);
   const content = useRef<HTMLTextAreaElement>(null);
-  console.log("title>>>", title.current);
-  console.log("content>>>", content.current);
   const navigate = useNavigate();
   // const content = useRef('')
   const handleRegist = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -31,7 +29,7 @@ const Regist = () => {
             done: false,
           });
           alert("할 일이 등록되었습니다.");
-          //window.location.replace("/");
+          navigate("/");
         } catch (err) {
           console.log(err);
         }
