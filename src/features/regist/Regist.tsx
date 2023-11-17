@@ -76,7 +76,7 @@ const Regist = () => {
                 placeholder="상세 내용을 입력하세요"
                 ref={content}
               />
-              <div>
+              <div className="btn_container">
                 <button className="submit" onClick={handleRegist}>
                   등록
                 </button>
