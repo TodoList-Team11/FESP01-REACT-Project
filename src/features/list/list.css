@@ -23,6 +23,16 @@
   margin-left: 20px;
 }
 
+.list .add-btn-container {
+  grid-area: 1/3;
+  text-align: right;
+  margin-right: 30px;
+}
+
+.list .add-btn {
+  width: 100px;
+}
+
 #container-list {
   /* grid-area: 2/1/5/5; */
 }

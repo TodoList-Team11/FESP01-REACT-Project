@@ -8,7 +8,7 @@ import ListSelectBox from "./ListSelectBox";
 import ListAddButton from "./ListAddButton";
 
 const List = () => {
-  const [limit, setLimit] = useState<number>(2);
+  const [limit, setLimit] = useState<number>(10);
   const { todoList } = useSelectTodoList({ limit: limit });
   const [notDoneList, setNotDoneList] = useState<TodoItem[]>([]);
   const [doneList, setDoneList] = useState<TodoItem[]>([]);
@@ -55,6 +55,9 @@ const List = () => {
         setNotDoneList={setNotDoneList}
         setDoneList={setDoneList}
       />
+      <div className="add-btn-container">
+        <ListAddButton setLimit={setLimit} />
+      </div>
       <Link to={`/regist`} className="regist-link">
         <button className="regist-btn">등록</button>
       </Link>
@@ -75,7 +78,6 @@ const List = () => {
             />
           ))}
         </div>
-        <ListAddButton setLimit={setLimit} />
       </section>
       <section
         id="content-done"
@@ -94,7 +96,6 @@ const List = () => {
             />
           ))}
         </div>
-        <ListAddButton setLimit={setLimit} />
       </section>
     </main>
   );
