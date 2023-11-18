@@ -5,7 +5,6 @@ interface Props {
 const ListAddButton = ({ setLimit }: Props) => {
   const getNextPage = () => {
     setLimit((limit) => {
-      console.log(limit);
       return limit + 10;
     });
   };
