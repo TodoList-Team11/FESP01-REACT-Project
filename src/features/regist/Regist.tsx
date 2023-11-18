@@ -7,6 +7,7 @@ import "./Regist.css";
 const Regist = () => {
   const title = useRef<HTMLInputElement>(null);
   const content = useRef<HTMLTextAreaElement>(null);
+  const image = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   // const content = useRef('')
   const handleRegist = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -23,11 +24,23 @@ const Regist = () => {
       const shouldRegister = window.confirm("할 일을 등록하시겠습니까?"); // axios post
       if (shouldRegister) {
         try {
-          await axios.post("http://localhost:33088/api/todolist", {
-            title: title.current.value,
-            content: content.current.value,
-            done: false,
-          });
+          const formData = new FormData();
+          formData.append("title", title.current.value);
+          formData.append("content", content.current.value);
+          formData.append("done", "false");
+          if (image.current?.files) {
+            formData.append("image", image.current.files[0]);
+          }
+
+          const response = await axios.post(
+            "http://localhost:33088/api/todolist",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
           alert("할 일이 등록되었습니다.");
           navigate("/");
         } catch (err) {
@@ -76,6 +89,7 @@ const Regist = () => {
                 placeholder="상세 내용을 입력하세요"
                 ref={content}
               />
+              <input type="file" accept="image/*" ref={image} />
               <div className="btn_container">
                 <button className="submit" onClick={handleRegist}>
                   등록
