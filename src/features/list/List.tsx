@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import updateTodoInfoDone from "services/useUpdateTodoInfoDone";
 import ListSelectBox from "./ListSelectBox";
 import ListAddButton from "./ListAddButton";
+import SearchButton from "./search/SearchButton";
 
 const List = () => {
   const [limit, setLimit] = useState<number>(10);
@@ -55,9 +56,15 @@ const List = () => {
         setNotDoneList={setNotDoneList}
         setDoneList={setDoneList}
       />
-      <div className="add-btn-container">
+      <div className="add-search-btn-container">
+        <SearchButton
+          todoList={todoList?.items || new Array<TodoItem>()}
+          setNotDoneList={setNotDoneList}
+          setDoneList={setDoneList}
+        />
         <ListAddButton setLimit={setLimit} />
       </div>
+
       <Link to={`/regist`} className="regist-link">
         <button className="regist-btn">등록</button>
       </Link>
